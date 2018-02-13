@@ -25,4 +25,5 @@ hs_err_pid*
 .idea
 gradlew
 gradlew.bat
-
+out
+build
