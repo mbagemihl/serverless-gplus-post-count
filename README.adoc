@@ -1,0 +1,3 @@
+= serverless-poc
+
+image:https://travis-ci.org/LivingDoc/livingdoc.svg?branch=master["Build Status", link="https://travis-ci.org/nt-ca-aqe/serverless-poc"] 
