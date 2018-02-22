@@ -5,6 +5,7 @@ deploy:
   provider: lambda
   function_name: serverless-poc
   region: eu-central-1
+  role: "arn:aws:iam::292384238617:role/lambda_basic_execution"
   runtime: java8
   handler_name: example.Hello::myHandler
   access_key_id: AKIAIJPHX7NGABEIUPFQ
