@@ -6,7 +6,7 @@ deploy:
   provider: lambda
   function_name: serverless-poc
   region: eu-central-1
-  role: "arn:aws:iam::292384238617:role/lambda_basic_execution"
+  role: "arn:aws:iam::292384238617:role/lambda_basic_execution_for_travis"
   runtime: java8
   handler_name: "serverlesspoc.Application::handleRequest"
   access_key_id: AKIAIJPHX7NGABEIUPFQ
