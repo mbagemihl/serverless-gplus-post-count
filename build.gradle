@@ -28,7 +28,6 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile "com.amazonaws:aws-lambda-java-core:1.1.0"
 }
 
 compileKotlin {
