@@ -1,4 +1,4 @@
-package serverless_poc
+package serverlesspoc
 
 class Application {
     fun handleRequest(name: String) = "Hello World!"
