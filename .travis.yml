@@ -1,7 +1,6 @@
 language: java
 jdk:
-- oraclejdk8
-install: "gradle build -v"
+  - oraclejdk8
 deploy:
   provider: lambda
   function_name: "serverless-poc"
