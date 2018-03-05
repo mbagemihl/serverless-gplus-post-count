@@ -7,6 +7,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3" //Gradle plugin to create fat/uber JARs, apply file transforms, and relocate packages for applications and libraries
     }
 }
 
