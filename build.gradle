@@ -3,11 +3,14 @@ buildscript {
 
     repositories {
         mavenCentral()
+         maven {
+                url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
-        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3" //Gradle plugin to create fat/uber JARs, apply file transforms, and relocate packages for applications and libraries
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2" //Gradle plugin to create fat/uber JARs, apply file transforms, and relocate packages for applications and libraries
     }
 }
 
@@ -15,7 +18,7 @@ group 'novatec-gmbh'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
-
+apply plugin: "com.github.johnrengelman.shadow"
 
 sourceCompatibility = 1.8
 
