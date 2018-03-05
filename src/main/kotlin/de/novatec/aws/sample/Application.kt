@@ -1,4 +1,4 @@
-package serverlesspoc
+package de.novatec.aws.sample
 
 import java.io.*
 import com.fasterxml.jackson.module.kotlin.*

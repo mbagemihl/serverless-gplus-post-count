@@ -7,9 +7,9 @@ deploy:
   provider: lambda
   function_name: "serverless-poc"
   region: "eu-central-1"
-  role: "arn:aws:iam::292384238617:role/lambda_basic_execution_for_travis"
+  role: "arn:aws:iam::292384238617:role/lambda_basic_execution"
   runtime: "java8"
-  handler_name: "serverlesspoc.Application::handleRequest"
+  handler_name: "de.novatec.aws.sample.Application::handler"
   access_key_id: "AKIAIJPHX7NGABEIUPFQ"
   secret_access_key:
       secure: "niEJ+eA8DZ+dumLB6gdSJ2jrOn7N8bDqMPHLmmZFCs2bBZtG1VVqOZNU3T9q47roeSVyEIKa+b9gtgM8VCemBuRfM6CHEb0P1pfQGJXT6Km7cmpOlG6epRfQ0aw3HMTgDGd/y2vh5sSsde5wA/xfDIfkEiveSTtfh6BDrqZGU/FB/r/MnBmXzzXNp72T5fvS7otRnwg6iXHZP1TtK89CzLwJ+Wb2vGLRosbL+wgEWlBRKiad/hStJ83pF2ac+uxxFiUfSCxPf5Ze7By/gozKm7vc5oECZi7wHXcBWRBAc9lnTzMHrj85Jmo+1KdUTngyYogY4jmh8OwLaiad3j6sC3m9UVGLAs3SfLdqNBVokbGDUWOhHdtncKWyhISbSUyV4XvOUP/3hP0dMQlIGf54xVxXe5EODijxIbwLGgXi2CDWHDHZVVoJkD2oQk6XXnP6IX9KPkQ9KH+FfcjHgErx6/2YJ/r77mSmHaUx9MPHNoescUPvtgXmc6g+0kTYEBIFltOS1CJPzXoDc85DpbuvvY9QNEsUQE0iAn9ClLq5PQhTf9C6nHQPz/bi49ciukIrbP+SNjWPQd+oWbDKw4i6K17a7I5O2WXjeARZn6ZERGPeHBPAM4q0OmDDRKPJYAAt2EVR9oBP5hnXqw7/AzINODxtsxgTSLCK2uW++KO/IF8="
