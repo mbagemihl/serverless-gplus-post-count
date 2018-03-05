@@ -14,9 +14,6 @@ group 'novatec-gmbh'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
-apply plugin: 'application'
-
-mainClassName = 'serverlesspoc.Application'
 
 
 sourceCompatibility = 1.8
