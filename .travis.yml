@@ -3,6 +3,7 @@ jdk:
   - oraclejdk8
 install:
   - gradle shadowjar
+  - gradle buildZip
 deploy:
   provider: lambda
   function_name: "serverless-poc"
