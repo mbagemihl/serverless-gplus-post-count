@@ -1,17 +1,15 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
+env:
+  global:
+  - AWS_ACCESS_KEY_ID=AKIAIJPHX7NGABEIUPFQ
+  - secure: b21OadubVBuikawRky8XgIqF/7pF0q/aOLSGdvOTd6kzgoN7cKXNbMaiNThzqZ+1S4XQTVJJew+PBCaCO1KHKAsFBX1NsAsWpDDJ1QlBt/FJw9etYh5WdK9A/VVo3RGfMHxETWFKUyC4aTGQ5Y3K9VMiABI1Y03QSVvOBZIpGbR3j8Pu1wcUNQZ+QvfFwiQjgX3RA2RBvPCn/UmSl5bDs7B3zptfMCvWEYvfWbZQ/e9e6g21RqYIuWt1SA9PKwfT5zEYvjiWPKANgXK2L1ClQpEZhvu1zCLwuAcS7WEsp1xRlEyunAwyjcY4BfrJPjlPPDwkQJXTnAiT+Sn8GV791jp4O8gGwXQ5jCFaTMwDYpFn7NmKyLer8aJ1J0foxCSnRhm6HVFo3BMheARGgmiZLIV/vHJueQqs0SMpLiTBkHTF+jyxV6SQQl30W6EKpFUPUIr05m6FAqWI7wOSSAlpNeZBYMYZ5zIhqUHFbVdRVpn/AtxisvGOkvtB48F2qNdZHHkqCJTAaFDJNBexjhAkCGGs+Zk8DJP7AplUTpEKkwaOX3B50Yau5O31tNAPAnyG3biA/vQaUGac1XLF3p+EYkyzfsqQbnMH275TrFGYlm6/ASVlEQ+q0BPYByjnkohVxoZ/xg8Jv4zz22KQQtunVmfe4zjDaMZMe2Ja5ZQ15+o=
+before_install:
+- pip install --user awscli
+- export PATH=$PATH:$HOME/.local/bin
 install:
-  - gradle shadowjar
-  - gradle buildZip
-deploy:
-  provider: lambda
-  function_name: "serverless-poc"
-  region: "eu-central-1"
-  role: "arn:aws:iam::292384238617:role/lambda_basic_execution"
-  runtime: "java8"
-  handler_name: "de.novatec.aws.sample.Application::handler"
-  file: ${TRAVIS_BUILD_DIR}/build/distributions/serverless-poc-1.0-SNAPSHOT.zip
-  access_key_id: "AKIAIJPHX7NGABEIUPFQ"
-  secret_access_key:
-      secure: "niEJ+eA8DZ+dumLB6gdSJ2jrOn7N8bDqMPHLmmZFCs2bBZtG1VVqOZNU3T9q47roeSVyEIKa+b9gtgM8VCemBuRfM6CHEb0P1pfQGJXT6Km7cmpOlG6epRfQ0aw3HMTgDGd/y2vh5sSsde5wA/xfDIfkEiveSTtfh6BDrqZGU/FB/r/MnBmXzzXNp72T5fvS7otRnwg6iXHZP1TtK89CzLwJ+Wb2vGLRosbL+wgEWlBRKiad/hStJ83pF2ac+uxxFiUfSCxPf5Ze7By/gozKm7vc5oECZi7wHXcBWRBAc9lnTzMHrj85Jmo+1KdUTngyYogY4jmh8OwLaiad3j6sC3m9UVGLAs3SfLdqNBVokbGDUWOhHdtncKWyhISbSUyV4XvOUP/3hP0dMQlIGf54xVxXe5EODijxIbwLGgXi2CDWHDHZVVoJkD2oQk6XXnP6IX9KPkQ9KH+FfcjHgErx6/2YJ/r77mSmHaUx9MPHNoescUPvtgXmc6g+0kTYEBIFltOS1CJPzXoDc85DpbuvvY9QNEsUQE0iAn9ClLq5PQhTf9C6nHQPz/bi49ciukIrbP+SNjWPQd+oWbDKw4i6K17a7I5O2WXjeARZn6ZERGPeHBPAM4q0OmDDRKPJYAAt2EVR9oBP5hnXqw7/AzINODxtsxgTSLCK2uW++KO/IF8="
+- gradle buildZip
+script:
+- gradle buildZip
+- "./upload.sh"
