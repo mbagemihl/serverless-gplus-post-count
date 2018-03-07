@@ -1,7 +1,7 @@
 package de.novatec.aws.sample
 
 
-class Application {
+class Application
 
     fun handler(): String {
         return "<html><head><title>HTML from API Gateway/Lambda</title></head>" +
