@@ -1,0 +1,82 @@
+{
+  "kind": "plus#activityFeed",
+  "etag": "\"RKS4-q7QGL10FxltAebpjqjKQR0/no3SjnsJ7uSUdGenj-58HtHx2ZE\"",
+  "nextPageToken": "ADSJ_i1VVcAZ8afiGXPZ1wxS9OfYHUi1rOSSceRbJYZicsMHf313U5C5Y7WJPfHF0Vke24Euk4byq0kJfCjGa541VIL31j1rRAYMDPytnyoy4KmA2kCl0qmUeZ7tnquH",
+  "title": "Google+ List of Activities for Collection PUBLIC",
+  "updated": "2018-05-17T12:16:43.774Z",
+  "items": [
+    {
+      "kind": "plus#activity",
+      "etag": "\"RKS4-q7QGL10FxltAebpjqjKQR0/K1B_EOqTee1f6dqx0X2UWFR1Fh4\"",
+      "title": "business@school Vorentscheidung: Am 04. Mai 2018 wurde am Immanuel-Kant-Gymnasium in Leinfelden-Echterdingen...",
+      "published": "2018-05-17T12:16:43.774Z",
+      "updated": "2018-05-17T12:16:43.774Z",
+      "id": "z123up4wcpizvtzxe04cg50r0srkgruzemg0k",
+      "url": "https://plus.google.com/+novatecgmbhdeutschland/posts/VbshvDNgdNE",
+      "actor": {
+        "id": "112206812255803830860",
+        "displayName": "NovaTec GmbH",
+        "url": "https://plus.google.com/112206812255803830860",
+        "image": {
+          "url": "https://lh6.googleusercontent.com/-YAxrocTHbPg/AAAAAAAAAAI/AAAAAAAAACk/GCOPopwK198/photo.jpg?sz=50"
+        },
+        "verification": {
+          "adHocVerified": "UNKNOWN_VERIFICATION_STATUS"
+        }
+      },
+      "verb": "post",
+      "object": {
+        "objectType": "note",
+        "actor": {
+          "verification": {
+            "adHocVerified": "UNKNOWN_VERIFICATION_STATUS"
+          }
+        },
+        "content": "business@school Vorentscheidung: Am 04. Mai 2018 wurde am Immanuel-Kant-Gymnasium in Leinfelden-Echterdingen die beste Geschäftsidee inkl. Businessplan gekürt und unsere Ausbildungsleiterin Nina Tuschkan war als Jurorin dabei.<br /><br />Wir sind begeistert von den vielen kreativen Ideen der Teams und wünschen der finalen Gruppe viel Erfolg für die Regionalentscheidung am 15. Mai 2018 in Rüsselsheim!",
+        "url": "https://plus.google.com/+novatecgmbhdeutschland/posts/VbshvDNgdNE",
+        "replies": {
+          "totalItems": 0,
+          "selfLink": "https://www.googleapis.com/plus/v1/activities/z123up4wcpizvtzxe04cg50r0srkgruzemg0k/comments"
+        },
+        "plusoners": {
+          "totalItems": 0,
+          "selfLink": "https://www.googleapis.com/plus/v1/activities/z123up4wcpizvtzxe04cg50r0srkgruzemg0k/people/plusoners"
+        },
+        "resharers": {
+          "totalItems": 0,
+          "selfLink": "https://www.googleapis.com/plus/v1/activities/z123up4wcpizvtzxe04cg50r0srkgruzemg0k/people/resharers"
+        },
+        "attachments": [
+          {
+            "objectType": "article",
+            "displayName": "Wir sind Juror bei der business@school - NovaTec GmbH -",
+            "content": "Schüler aus ganz Baden-Württemberg hatten in den vergangenen Monaten die Gelegenheit, sich mit einer eigenen Geschäftsidee bei der business@school zu bewerben. Beim Vorentscheid am 04. Mai 2018 am Immanuel-Kant-Gymnasium in Leinfelden-Echterdingen wurde dabei die beste ...",
+            "url": "https://www.novatec-gmbh.de/aktuelles/news/detailansicht-nachrichten/wir-sind-juror-bei-der-businessschool/?kampagne=go",
+            "image": {
+              "url": "https://lh3.googleusercontent.com/proxy/2rXHGQOgCFFhyI3rn8yFM-PHV6nK9nsveJKnlJpO6Ib-Vb9xKWnMtFlChMhZhGZBRDIqxXI8jv2fV5qNt5uGE0m5512nOqvJdw=w120-h120",
+              "type": "image/jpeg",
+              "height": 120,
+              "width": 120
+            },
+            "fullImage": {
+              "url": "https://www.novatec-gmbh.de/typo3temp/pics/5c15d7218e.jpg",
+              "type": "image/jpeg"
+            }
+          }
+        ]
+      },
+      "provider": {
+        "title": "Google+"
+      },
+      "access": {
+        "kind": "plus#acl",
+        "description": "Public",
+        "items": [
+          {
+            "type": "public"
+          }
+        ]
+      }
+    }
+  ]
+}
