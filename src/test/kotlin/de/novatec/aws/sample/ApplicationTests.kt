@@ -1,13 +1,20 @@
 package de.novatec.aws.sample
 
+import com.nhaarman.mockito_kotlin.given
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.willReturn
 import org.junit.jupiter.api.Test
 
 internal class ApplicationTests {
 
-    @Test fun getGooglePlus() {
-        val testee = Application()
+    private val mockHttpClient = mock<GooglePlusAccessor>()
 
-        val result = testee.handler(2018,1)
+    private val testee = Application()
+
+    @Test fun getGooglePlus() {
+        given(mockHttpClient.get()).willReturn { Result(emptyList()) }
+
+        val result = testee.handler(Input(year = 2018, quarter = 1))
 
         println(result)
     }
