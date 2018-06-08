@@ -7,7 +7,11 @@ internal class ApplicationTests {
     @Test fun getGooglePlus() {
         val testee = Application()
 
-        val result = testee.handler(2018,1)
+        var input = Input()
+        input.year = 2017
+        input.quarter = 2
+
+        val result = testee.handler(input, null)
 
         println(result)
     }
