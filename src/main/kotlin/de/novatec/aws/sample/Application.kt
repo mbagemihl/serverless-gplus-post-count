@@ -11,8 +11,6 @@ class Application : RequestHandler<Input, List<Action>> {
 
     fun handler(input: Input): List<Action> {
 
-        val result = GooglePlusAccessor().get()
-
         val startDate: LocalDateTime
         val endDate: LocalDateTime
         when (input.quarter) {
@@ -37,35 +35,18 @@ class Application : RequestHandler<Input, List<Action>> {
             }
         }
         var list:List<Action> = ArrayList()
-//        var nextPageStr = ""
-//        do {
-//            var response = get("https://www.googleapis.com/plus/v1/people/+novatecgmbhdeutschland/activities/public?key=$key&maxResults=100$nextPageStr")
-//            var result: Result = Mapper().deserialize(response.jsonObject)
-//            if (result.nextPageToken != "") {
-//                nextPageStr = "&pageToken=${result.nextPageToken}"
-//            } else {
-//                nextPageStr = ""
-//            }
-
+        var nextPageToken:String = ""
+        do {
+            val result = GooglePlusAccessor().get(nextPageToken)
             list += result.items.filter {
                 it.published.isAfter(startDate) && it.published.isBefore(endDate)
             }
-//        } while (!result.nextPageToken.isNullOrBlank() && result.items.last().published.isAfter(startDate))
-//
+            nextPageToken = result.nextPageToken ?: ""
+        } while (!result.nextPageToken.isNullOrBlank() && result.items.last().published.isAfter(startDate))
+
         return list
     }
 }
-
-data class Action(
-        val id: String,
-        val verb: String,
-        val published: LocalDateTime
-)
-
-data class Result(
-        val nextPageToken: String?,
-        val items: List<Action>
-)
 
 data class Input(
         val year: Int = LocalDateTime.now().year,
