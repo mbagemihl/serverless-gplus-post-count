@@ -3,7 +3,7 @@ package de.novatec.aws.sample
 open class GooglePlusAccessor {
     private val key = System.getenv("apiKey")
 
-    internal fun get(nextPageToken: String?): Result {
+    internal fun get(nextPageToken: String): Result {
         val nextPageStr: String = if (nextPageToken != "") {
             "&pageToken=$nextPageToken"
         } else {

@@ -34,8 +34,9 @@ class Application : RequestHandler<Input, String> {
                 throw IndexOutOfBoundsException("Quarter must be between 1 and 4!")
             }
         }
-        var list: List<Action> = ArrayList()
+
         var nextPageToken = ""
+        var list:List<Action> = mutableListOf()
         do {
             val result = GooglePlusAccessor().get(nextPageToken)
             list += result.items.filter {
