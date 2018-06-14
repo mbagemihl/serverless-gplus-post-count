@@ -4,12 +4,12 @@ import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestHandler
 import java.time.LocalDateTime
 
-class Application : RequestHandler<Input, List<Action>> {
-    override fun handleRequest(input: Input, context: Context?): List<Action> {
+class Application : RequestHandler<Input, String> {
+    override fun handleRequest(input: Input, context: Context?): String {
         return handler(input)
     }
 
-    fun handler(input: Input): List<Action> {
+    fun handler(input: Input): String {
 
         val startDate: LocalDateTime
         val endDate: LocalDateTime
@@ -34,8 +34,8 @@ class Application : RequestHandler<Input, List<Action>> {
                 throw IndexOutOfBoundsException("Quarter must be between 1 and 4!")
             }
         }
-        var list:List<Action> = ArrayList()
-        var nextPageToken:String = ""
+        var list: List<Action> = ArrayList()
+        var nextPageToken = ""
         do {
             val result = GooglePlusAccessor().get(nextPageToken)
             list += result.items.filter {
@@ -44,7 +44,7 @@ class Application : RequestHandler<Input, List<Action>> {
             nextPageToken = result.nextPageToken ?: ""
         } while (!result.nextPageToken.isNullOrBlank() && result.items.last().published.isAfter(startDate))
 
-        return list
+        return """googlePlus_posts{year="${input.year}",quarter="${input.quarter}"} ${list.count().toDouble()}"""
     }
 }
 
