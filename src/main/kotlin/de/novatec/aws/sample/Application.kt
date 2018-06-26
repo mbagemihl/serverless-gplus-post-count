@@ -3,53 +3,46 @@ package de.novatec.aws.sample
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestHandler
 import java.time.LocalDateTime
+import java.util.*
 
-class Application : RequestHandler<Input, String> {
-    override fun handleRequest(input: Input, context: Context?): String {
-        return handler(input)
+class Application {
+    fun handleRequest(): String {
+        return handler()
     }
 
-    fun handler(input: Input): String {
+    fun handler(): String {
 
-        val startDate: LocalDateTime
-        val endDate: LocalDateTime
-        when (input.quarter) {
-            1 -> {
-                startDate = LocalDateTime.of(input.year, 1, 1, 0, 0, 0)
-                endDate = LocalDateTime.of(input.year, 4, 1, 0, 0, 0).minusDays(1)
-            }
-            2 -> {
-                startDate = LocalDateTime.of(input.year, 4, 1, 0, 0, 0)
-                endDate = LocalDateTime.of(input.year, 7, 1, 0, 0, 0).minusDays(1)
-            }
-            3 -> {
-                startDate = LocalDateTime.of(input.year, 7, 1, 0, 0, 0)
-                endDate = LocalDateTime.of(input.year, 10, 1, 0, 0, 0).minusDays(1)
-            }
-            4 -> {
-                startDate = LocalDateTime.of(input.year, 10, 1, 0, 0, 0)
-                endDate = LocalDateTime.of(input.year + 1, 1, 1, 0, 0, 0).minusDays(1)
-            }
-            else -> {
-                throw IndexOutOfBoundsException("Quarter must be between 1 and 4!")
-            }
+        val initDate : LocalDateTime = LocalDateTime.of(2017,7,1,0,0)
+        var helperDate : LocalDateTime = initDate
+        var quarters : List<Quarter> = mutableListOf()
+
+        while (!helperDate.isAfter(LocalDateTime.now())){
+            quarters += Quarter(helperDate,helperDate.plusMonths(3).minusDays(1),0)
+            helperDate = helperDate.plusMonths(3)
         }
 
         var nextPageToken = ""
-        var list:List<Action> = mutableListOf()
         do {
             val result = GooglePlusAccessor().get(nextPageToken)
-            list += result.items.filter {
-                it.published.isAfter(startDate) && it.published.isBefore(endDate)
-            }
-            nextPageToken = result.nextPageToken ?: ""
-        } while (!result.nextPageToken.isNullOrBlank() && result.items.last().published.isAfter(startDate))
 
-        return """googlePlus_posts{year="${input.year}",quarter="${input.quarter}"} ${list.count().toDouble()}"""
+            result.items.forEach {r ->
+                 val q = quarters.find { q ->
+                    r.published.isAfter(q.startDate) && r.published.isBefore(q.endDate)
+                } // find out how to increment count here
+                q?.postCount = q?.postCount?.plus(1)!!
+            }
+            nextPageToken = result.nextPageToken
+        } while (!result.nextPageToken.isNullOrBlank())
+        var resultStr = ""
+        quarters.forEach{
+            resultStr += """googlePlus_posts{year="${it.startDate.year}",quarter="${((it.startDate.monthValue- 1) / 3) + 1 }"} ${it.postCount.toDouble()} \n"""
+        }
+        return resultStr
     }
 }
 
-data class Input(
-        val year: Int = LocalDateTime.now().year,
-        val quarter: Int = LocalDateTime.now().monthValue / 4
+data class Quarter(
+        val startDate: LocalDateTime,
+        val endDate: LocalDateTime,
+        var postCount : Int
 )
