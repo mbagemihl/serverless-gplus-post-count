@@ -35,7 +35,7 @@ class Application {
         } while (!result.nextPageToken.isNullOrBlank())
         var resultStr = ""
         quarters.forEach{
-            resultStr += """googlePlus_posts{year="${it.startDate.year}",quarter="${((it.startDate.monthValue- 1) / 3) + 1 }"} ${it.postCount.toDouble()} \n"""
+            resultStr += """googlePlus_posts{year="${it.startDate.year}",quarter="${((it.startDate.monthValue- 1) / 3) + 1 }"} ${it.postCount.toDouble()} """
         }
         return resultStr
     }
